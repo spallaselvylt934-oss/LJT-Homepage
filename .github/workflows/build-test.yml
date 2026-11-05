@@ -32,12 +32,15 @@ jobs:
       - name: Verify generated pages
         run: |
           ls _site
+          ls _site/publication
           test -f _site/index.html
           test -f _site/publications/index.html
-          test -f _site/publication/synlogic/index.html
-          test -f _site/publication/c-eval/index.html
+          test -f _site/publication/synlogic.html -o -f _site/publication/synlogic/index.html
+          test -f _site/publication/c-eval.html -o -f _site/publication/c-eval/index.html
           grep -c "Junteng Liu" _site/index.html
           grep -o "SynLogic: Synthesizing Verifiable Reasoning Data at Scale for Learning Logical Reasoning and Beyond" _site/index.html | head -1
+          grep -o "On the Universal Truthfulness Hyperplane Inside LLMs" _site/index.html | head -1
           grep -o "jliugi@connect.ust.hk" _site/index.html | head -1
           grep -o "Zhiyuan Honor Scholarship" _site/index.html | head -1
+          grep -o "HKUST NLP Group" _site/index.html | head -1
           grep -c "archive__item-title" _site/publications/index.html
